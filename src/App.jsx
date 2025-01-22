@@ -1,15 +1,16 @@
 import './App.css';
 import NavBar from "./components/NavBar.jsx";
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 import GridPage from "./pages/GridPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
 
 const App = () => {
   return (
       <>
-        <NavBar />
         <Routes>
-          <Route path="/" element={<div>Home Page</div>} />
-          <Route path="/grid" element={<GridPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/grid" element={<NavBar><GridPage/></NavBar>} />
+            <Route path="/" element={<Navigate to="/grid" replace/>} />
         </Routes>
       </>
   );
